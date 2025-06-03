@@ -49,14 +49,48 @@ public class PlantOntology {
 
 
 
-    public void createPlantIndividual(String plantName, String plantClassName) {
+   /* public void createPlantIndividual(String plantName, String plantClassName) {
         OWLClass plantType = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + plantClassName));
         OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantName));
 
         OWLClassAssertionAxiom axPlant = dataFactory.getOWLClassAssertionAxiom(plantType, plantIndiv);
         ontoManager.applyChange(new AddAxiom(plantOntology, axPlant));
         saveOntology();
+    }*/
+
+    public void createPlantIndividual(models.Plant plant) {
+        // 1. Създаване на индивид на растението
+        OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plant.getName()));
+
+        // 2. Деклариране на клас (тип) на растението
+        OWLClass plantType = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + plant.getType()));
+        if (!plantOntology.containsClassInSignature(plantType.getIRI())) {
+            // Ако класът не съществува – го декларираме
+            OWLDeclarationAxiom declareClass = dataFactory.getOWLDeclarationAxiom(plantType);
+            ontoManager.applyChange(new AddAxiom(plantOntology, declareClass));
+        }
+
+        OWLClassAssertionAxiom axPlant = dataFactory.getOWLClassAssertionAxiom(plantType, plantIndiv);
+        ontoManager.applyChange(new AddAxiom(plantOntology, axPlant));
+
+        // Добавяне на симптоми
+        if (plant.getSymptoms() != null) {
+            for (String symptom : plant.getSymptoms()) {
+                String symptomIndivName = plant.getName() + "_" + symptom;
+                OWLNamedIndividual symptomIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + symptomIndivName));
+                OWLClass symptomClass = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + symptom));
+                OWLClassAssertionAxiom classAssertion = dataFactory.getOWLClassAssertionAxiom(symptomClass, symptomIndiv);
+                ontoManager.applyChange(new AddAxiom(plantOntology, classAssertion));
+
+                OWLObjectProperty hasSymptom = dataFactory.getOWLObjectProperty(IRI.create(ontologyIRIStr + "hasSymptom"));
+                OWLObjectPropertyAssertionAxiom link = dataFactory.getOWLObjectPropertyAssertionAxiom(hasSymptom, plantIndiv, symptomIndiv);
+                ontoManager.applyChange(new AddAxiom(plantOntology, link));
+            }
+        }
+
+        saveOntology();
     }
+
 
     public void addSymptomToPlantIndividual(String plantIndivName, String symptomClassName, String symptomIndivName) {
         OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantIndivName));
@@ -158,6 +192,93 @@ public class PlantOntology {
         ontoManager.applyChanges(remover.getChanges());
         saveOntology();
     }
+
+    public List<String> getNeedsForPlant(String plantIndivName) {
+        List<String> result = new ArrayList<>();
+        OWLNamedIndividual plant = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantIndivName));
+        OWLObjectProperty hasNeed = dataFactory.getOWLObjectProperty(IRI.create(ontologyIRIStr + "hasNeed"));
+
+        for (OWLObjectPropertyAssertionAxiom ax : plantOntology.getObjectPropertyAssertionAxioms(plant)) {
+            if (ax.getProperty().asOWLObjectProperty().equals(hasNeed)) {
+                OWLNamedIndividual needIndiv = ax.getObject().asOWLNamedIndividual();
+                StringBuilder sb = new StringBuilder();
+                sb.append("Нужда: ").append(getIndividualFriendlyName(needIndiv.getIRI()));
+
+                for (OWLClassExpression type : needIndiv.getTypes(plantOntology)) {
+                    if (!type.isAnonymous()) {
+                        sb.append(" от тип ").append(getClassFriendlyName(type.asOWLClass()));
+                    }
+                }
+
+                for (OWLDataPropertyAssertionAxiom dp : plantOntology.getDataPropertyAssertionAxioms(needIndiv)) {
+                    OWLDataProperty property = dp.getProperty().asOWLDataProperty();
+                    String propName = getIndividualFriendlyName(property.getIRI());
+                    sb.append(" | ").append(propName).append(" = ").append(dp.getObject());
+                }
+
+                result.add(sb.toString());
+            }
+        }
+        return result;
+    }
+
+
+
+   public models.Plant getPlantByIndividualName(String plantIndivName) {
+        models.Plant plantModel = new models.Plant();
+        plantModel.setName(plantIndivName);
+
+
+        List<String> symptoms = new ArrayList<>();
+
+        OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantIndivName));
+
+       for (OWLClassExpression typeExpr : plantIndiv.getTypes(plantOntology)) {
+           if (!typeExpr.isAnonymous()) {
+               OWLClass plantClass = typeExpr.asOWLClass();
+               plantModel.setType(getClassFriendlyName(plantClass));
+
+
+                for (OWLSubClassOfAxiom ax : plantOntology.getSubClassAxiomsForSubClass(plantClass)) {
+                    if (ax.getSuperClass() instanceof OWLObjectExactCardinality) {
+                        OWLObjectExactCardinality cardinality = (OWLObjectExactCardinality) ax.getSuperClass();
+                        String iriStr = cardinality.getProperty().asOWLObjectProperty().getIRI().toString();
+                        String shortForm = iriStr.substring(iriStr.indexOf("#") + 1);
+
+                        if (shortForm.equals("hasNeed")) {
+                            OWLClassExpression needExpr = cardinality.getFiller();
+                            if (!needExpr.isAnonymous()) {
+                                String needName = getClassFriendlyName(needExpr.asOWLClass());
+                                if (needName.contains("Water"))
+                                    plantModel.setSoilMoisture(needName.contains("Frequent") ? "high" : "low");
+                                if (needName.contains("Humidity"))
+                                    plantModel.setHumidity(needName.contains("High") ? "high" : "low");
+                                if (needName.contains("Light"))
+                                    plantModel.setLight(needName.contains("High") ? "high" : "low");
+                                if (needName.contains("Temperature"))
+                                    plantModel.setTemperature(needName.contains("High") ? "high" : "low");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        OWLObjectProperty hasSymptom = dataFactory.getOWLObjectProperty(IRI.create(ontologyIRIStr + "hasSymptom"));
+        for (OWLObjectPropertyAssertionAxiom ax : plantOntology.getObjectPropertyAssertionAxioms(plantIndiv)) {
+            if (ax.getProperty().equals(hasSymptom)) {
+                OWLNamedIndividual symptom = ax.getObject().asOWLNamedIndividual();
+                symptoms.add(getIndividualFriendlyName(symptom.getIRI()));
+            }
+        }
+        plantModel.setSymptoms(symptoms);
+        return plantModel;
+    }
+
+
+
+
 
 
 
