@@ -28,13 +28,7 @@ public class CareAgent extends Agent {
                     String response = "";
 
                    switch (parts[0]) {
-                  /*      case "createPlant":
-                            // Формат: createPlant:orchid1:Orchid
-                            ontology.createPlantIndividual(parts[1], parts[2]);
-                            response = "Създадено растение (индивид): " + parts[1] + " от клас " + parts[2];
-                            break;
 
-                   */
 
                         case "createPlantModel":
                             // Формат: createPlantModel:JSON
@@ -49,23 +43,43 @@ public class CareAgent extends Agent {
                             }
                             break;
 
-                        case "addSymptom":
-                            // Формат: addSymptom:orchid1:YellowLeaves:yellowLeaves1
-                            ontology.addSymptomToPlantIndividual(parts[1], parts[2], parts[3]);
-                            response = "Добавен симптом (индивид) " + parts[3] + " от клас " + parts[2] + " към растение " + parts[1];
-                            break;
+                       case "analyzePlantModel":
+                           try {
+                               String json = msg.getContent().substring("analyzePlantModel:".length());
+                               ObjectMapper mapper = new ObjectMapper();
+                               Plant plantModel = mapper.readValue(json, Plant.class);
 
-                        case "getAdvice":
-                            // Формат: getAdvice:orchid1
-                            List<String> advice = ontology.getAdviceForPlantIndividual(parts[1]);
-                            response = String.join("\n", advice);
-                            break;
+                               ontology.createPlantIndividual(plantModel);
+                               List<String> advice = ontology.getAdviceForPlantIndividual(plantModel.getName());
+                               response = String.join("\n", advice);
+
+
+                           } catch (Exception e) {
+                               response = "Грешка при анализ: " + e.getMessage();
+                           }
+                           break;
+
 
                         case "getPlant":
                             // Формат: getPlant:orchid1
                             models.Plant plant = ontology.getPlantByIndividualName(parts[1]);
                             response = plant.toString();
                             break;
+
+                         case "removePlant":
+                            try {
+                                String json = msg.getContent().substring("removePlant:".length());
+                                 ObjectMapper mapper = new ObjectMapper();
+                                 Plant plantModel = mapper.readValue(json, Plant.class);
+
+                                 ontology.removePlantAndSymptoms(plantModel.getName(), plantModel.getSymptoms());
+                                 response = "Растението и симптомите са премахнати: " + plantModel.getName();
+                            } catch (Exception e) {
+                                 response = "Грешка при изтриване: " + e.getMessage();
+                                }
+                            break;
+
+
 
                         default:
                             response = "Непозната команда.";

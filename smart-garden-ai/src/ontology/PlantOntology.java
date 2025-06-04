@@ -49,14 +49,6 @@ public class PlantOntology {
 
 
 
-   /* public void createPlantIndividual(String plantName, String plantClassName) {
-        OWLClass plantType = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + plantClassName));
-        OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantName));
-
-        OWLClassAssertionAxiom axPlant = dataFactory.getOWLClassAssertionAxiom(plantType, plantIndiv);
-        ontoManager.applyChange(new AddAxiom(plantOntology, axPlant));
-        saveOntology();
-    }*/
 
     public void createPlantIndividual(models.Plant plant) {
         // 1. Създаване на индивид на растението
@@ -73,7 +65,7 @@ public class PlantOntology {
         OWLClassAssertionAxiom axPlant = dataFactory.getOWLClassAssertionAxiom(plantType, plantIndiv);
         ontoManager.applyChange(new AddAxiom(plantOntology, axPlant));
 
-        // Добавяне на симптоми
+
         if (plant.getSymptoms() != null) {
             for (String symptom : plant.getSymptoms()) {
                 String symptomIndivName = plant.getName() + "_" + symptom;
@@ -88,7 +80,7 @@ public class PlantOntology {
             }
         }
 
-        saveOntology();
+      //  saveOntology();
     }
 
 
@@ -176,21 +168,23 @@ public class PlantOntology {
         return result;
     }
 
-
-    public void deletePlant(String plantName) {
-        OWLClass plantClass = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + plantName));
+    public void removePlantAndSymptoms(String plantName, List<String> symptomNames) {
         OWLEntityRemover remover = new OWLEntityRemover(ontoManager, plantOntology.getImportsClosure());
-        plantClass.accept(remover);
-        ontoManager.applyChanges(remover.getChanges());
-        saveOntology();
-    }
 
-    public void deleteSymptom(String symptomName) {
-        OWLClass symptomClass = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + symptomName));
-        OWLEntityRemover remover = new OWLEntityRemover(ontoManager, plantOntology.getImportsClosure());
-        symptomClass.accept(remover);
+        // Премахване на растението
+        OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantName));
+        plantIndiv.accept(remover);
+
+        // Премахване на симптомите
+        if (symptomNames != null) {
+            for (String symptom : symptomNames) {
+                String symptomIndivName = plantName + "_" + symptom;
+                OWLNamedIndividual symptomIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + symptomIndivName));
+                symptomIndiv.accept(remover);
+            }
+        }
+
         ontoManager.applyChanges(remover.getChanges());
-        saveOntology();
     }
 
     public List<String> getNeedsForPlant(String plantIndivName) {
