@@ -5,7 +5,8 @@ import java.sql.*;
 
 public class PlantDAO {
 
-    public void savePlant(models.Plant plant, int userId) throws SQLException {
+    public int savePlant(models.Plant plant, int userId) throws SQLException {
+        int plantId = 0;
         try (Connection conn = DBManager.getConnection()) {
             String sql = "INSERT INTO plant (name, type, soil_moisture, temperature, humidity, light, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -18,13 +19,14 @@ public class PlantDAO {
             stmt.setInt(7, userId);
             stmt.executeUpdate();
 
-            int plantId = getPlantIdByName(plant.getName());
+            plantId = getPlantIdByName(plant.getName());
             if (plant.getSymptoms() != null) {
                 for (String symptom : plant.getSymptoms()) {
                     saveSymptom(symptom, plantId);
                 }
             }
         }
+        return plantId;
     }
 
     public void saveSymptom(String symptom, int plantId) throws SQLException {

@@ -1,8 +1,10 @@
 package agents;
 
+import dao.PlantDAO;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import models.PlantRequestWrapper;
 import ontology.PlantOntology;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +32,7 @@ public class CareAgent extends Agent {
                    switch (parts[0]) {
 
 
-                        case "createPlantModel":
+              /*          case "createPlantModel":
                             // Формат: createPlantModel:JSON
                             try {
                                 String json = msg.getContent().substring("createPlantModel:".length());
@@ -43,13 +45,35 @@ public class CareAgent extends Agent {
                             }
                             break;
 
+               */
+
                        case "analyzePlantModel":
                            try {
                                String json = msg.getContent().substring("analyzePlantModel:".length());
                                ObjectMapper mapper = new ObjectMapper();
-                               Plant plantModel = mapper.readValue(json, Plant.class);
+                               PlantRequestWrapper wrapper = mapper.readValue(json, PlantRequestWrapper.class);
+                               Plant plantModel = wrapper.getPlant();
+
+                               int userId = wrapper.getUserId();
 
                                ontology.createPlantIndividual(plantModel);
+
+                               Plant fullPlant = ontology.getPlantByIndividualName(plantModel.getName());
+
+
+                               //записване в базата
+                               PlantDAO plantDAO = new PlantDAO();
+                               int plantId = plantDAO.savePlant(fullPlant, userId);
+
+                               if (plantModel.getSymptoms() != null) {
+
+                                   for (String symptom : plantModel.getSymptoms()) {
+                                       plantDAO.saveSymptom(symptom, userId);
+                                   }
+                               }
+
+
+                               //съвети
                                List<String> advice = ontology.getAdviceForPlantIndividual(plantModel.getName());
                                response = String.join("\n", advice);
 
