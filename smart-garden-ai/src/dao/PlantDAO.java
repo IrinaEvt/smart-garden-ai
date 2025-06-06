@@ -1,6 +1,10 @@
 package dao;
 
+import models.Plant;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PlantDAO {
@@ -48,5 +52,48 @@ public class PlantDAO {
             if (rs.next()) return rs.getInt("id");
         }
         return -1;
+    }
+
+    public List<Plant> getPlantsByUserId(int userId) throws SQLException {
+        List<Plant> plants = new ArrayList<>();
+
+        String query = "SELECT id, name, type, soil_moisture, temperature, humidity, light FROM plant WHERE user_id = ?";
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Plant plant = new Plant();
+                plant.setName(rs.getString("name"));
+                plant.setType(rs.getString("type"));
+                plant.setSoilMoisture(rs.getString("soil_moisture"));
+                plant.setTemperature(rs.getString("temperature"));
+                plant.setHumidity(rs.getString("humidity"));
+                plant.setLight(rs.getString("light"));
+                plants.add(plant);
+            }
+        }
+
+        return plants;
+    }
+
+    public List<String> getSymptomsByPlantId(int plantId) throws SQLException {
+        List<String> symptoms = new ArrayList<>();
+        String query = "SELECT name FROM symptom WHERE plant_id = ?";
+
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, plantId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                symptoms.add(rs.getString("name"));
+            }
+        }
+
+        return symptoms;
     }
 }

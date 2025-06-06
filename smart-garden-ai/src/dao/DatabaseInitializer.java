@@ -10,7 +10,7 @@ public class DatabaseInitializer {
         String url = "jdbc:sqlite:plants.db";
 
         try {
-            // 👉 Това казва на Java да зареди SQLite драйвера от JAR файла
+            // load SQLite driver from JAR file
             Class.forName("org.sqlite.JDBC");
 
             try (Connection conn = DriverManager.getConnection(url);

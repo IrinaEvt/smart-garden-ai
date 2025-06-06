@@ -6,7 +6,7 @@ public class UserDAO {
 
     public boolean createUser(String username, String password) throws SQLException {
         if (userExists(username)) {
-            return false; // вече съществува
+            return false;
         }
 
         try (Connection conn = DBManager.getConnection()) {
@@ -37,7 +37,7 @@ public class UserDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            return rs.next(); // ако има резултат, значи потребителят съществува
+            return rs.next(); // if true, user exists
         }
     }
 }

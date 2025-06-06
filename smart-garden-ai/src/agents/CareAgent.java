@@ -61,14 +61,14 @@ public class CareAgent extends Agent {
                                Plant fullPlant = ontology.getPlantByIndividualName(plantModel.getName());
 
 
-                               //записване в базата
+                               //save in DB
                                PlantDAO plantDAO = new PlantDAO();
                                int plantId = plantDAO.savePlant(fullPlant, userId);
 
                                if (plantModel.getSymptoms() != null) {
 
                                    for (String symptom : plantModel.getSymptoms()) {
-                                       plantDAO.saveSymptom(symptom, userId);
+                                       plantDAO.saveSymptom(symptom, plantId);
                                    }
                                }
 
@@ -102,6 +102,34 @@ public class CareAgent extends Agent {
                                  response = "Грешка при изтриване: " + e.getMessage();
                                 }
                             break;
+
+                       case "getPlantsByUserId":
+                           try {
+                               int userId = Integer.parseInt(parts[1]);
+                               PlantDAO plantDAO = new PlantDAO();
+                               List<Plant> plants = plantDAO.getPlantsByUserId(userId);
+
+                               ObjectMapper mapper = new ObjectMapper();
+                               response = mapper.writeValueAsString(plants);
+
+                           } catch (Exception e) {
+                               response = "Грешка при взимане на растения: " + e.getMessage();
+                           }
+                           break;
+
+                       case "getSymptomsByPlantId":
+                           try {
+                               int plantId = Integer.parseInt(parts[1]);
+                               PlantDAO plantDAO = new PlantDAO();
+                               List<String> symptoms = plantDAO.getSymptomsByPlantId(plantId);
+
+                               ObjectMapper mapper = new ObjectMapper();
+                               response = mapper.writeValueAsString(symptoms);
+
+                           } catch (Exception e) {
+                               response = "Грешка при взимане на симптоми: " + e.getMessage();
+                           }
+                           break;
 
 
 

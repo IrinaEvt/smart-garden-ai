@@ -17,7 +17,7 @@ public class PlantInteractionBehaviour extends OneShotBehaviour {
         UserAgent ua = (UserAgent) myAgent;
 
         Plant plant = new Plant();
-        plant.setName("orchid1");
+        plant.setName("orchid8");
         plant.setType("Orchid");
         List<String> symptoms = new ArrayList<>();
         symptoms.add("LeafYellowing");
@@ -42,12 +42,12 @@ public class PlantInteractionBehaviour extends OneShotBehaviour {
 
         ACLMessage getPlant = new ACLMessage(ACLMessage.REQUEST);
         getPlant.addReceiver(myAgent.getAID("care"));
-        getPlant.setContent("getPlant:orchid1");
+        getPlant.setContent("getPlant:orchid8");
         myAgent.send(getPlant);
 
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(plant); // използваме същия обект
+            String json = mapper.writeValueAsString(plant);
 
             ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
             msg.addReceiver(myAgent.getAID("care"));
