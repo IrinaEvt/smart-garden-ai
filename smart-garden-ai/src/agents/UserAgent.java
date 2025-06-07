@@ -25,10 +25,17 @@ public class UserAgent extends Agent {
     public int currentUserId = -1;
     public String currentUsername;
     public LoginRegisterGUI loginGUI;
+    private gui.PlantListGUI plantListGUI;
 
     private final ConcurrentHashMap<String, Consumer<String>> pendingResponses = new ConcurrentHashMap<>();
 
+    public void setPlantListGUI(gui.PlantListGUI gui) {
+        this.plantListGUI = gui;
+    }
 
+    public void updatePlantList(List<Plant> updatedPlants) {
+        this.plantListGUI.updatePlantComboBox(updatedPlants);
+    }
 
 
     @Override
@@ -37,8 +44,6 @@ public class UserAgent extends Agent {
 
         SwingUtilities.invokeLater(() -> new LoginRegisterGUI(this));
 
-        //      addBehaviour(new LoginRegisterBehaviour()) ;
-        //       addBehaviour(new PlantInteractionBehaviour()) ;
 
 
         addBehaviour(new CyclicBehaviour() {
@@ -142,7 +147,7 @@ public class UserAgent extends Agent {
                     ObjectMapper mapper = new ObjectMapper();
                     Plant[] plantArray = mapper.readValue(json, Plant[].class);
                     List<Plant> updatedList = Arrays.asList(plantArray);
-                    SwingUtilities.invokeLater(() -> new gui.PlantListGUI(this, updatedList));
+                    SwingUtilities.invokeLater(() -> updatePlantList(updatedList));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -200,7 +205,7 @@ public class UserAgent extends Agent {
 
                 ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
                 msg.addReceiver(getAID("care"));
-                msg.setContent("addSymptomReasoning:" + json); // използваме същата логика
+                msg.setContent("addSymptomReasoning:" + json);
                 String convId = "reasoningOnly_" + plantName + "_" + System.currentTimeMillis();
                 msg.setConversationId(convId);
                 pendingResponses.put(convId, callback);

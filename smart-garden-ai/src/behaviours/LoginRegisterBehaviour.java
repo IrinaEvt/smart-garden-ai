@@ -54,7 +54,10 @@ public class LoginRegisterBehaviour extends OneShotBehaviour {
                         System.out.println(plantsJson);
                         Plant[] plantArray = mapper.readValue(plantsJson, Plant[].class);
                         List<Plant> plants = Arrays.asList(plantArray);
-                        SwingUtilities.invokeLater(() -> new gui.PlantListGUI(ua, plants));
+                        SwingUtilities.invokeLater(() -> {
+                            gui.PlantListGUI gui = new gui.PlantListGUI(ua, plants);
+                            ua.setPlantListGUI(gui);  // ⬅️ това ти трябва!
+                        });
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }

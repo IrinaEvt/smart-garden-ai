@@ -25,6 +25,20 @@ public class PlantListGUI extends JFrame {
         init();
     }
 
+    public void updatePlantComboBox(List<Plant> newPlants) {
+        this.userPlants = newPlants;
+        plantComboBox.removeAllItems();
+        for (Plant plant : newPlants) {
+            plantComboBox.addItem(plant.getName());
+        }
+
+        // по желание: покажи детайли за първото
+        if (!newPlants.isEmpty()) {
+            plantComboBox.setSelectedIndex(0);
+            showPlantDetails();
+        }
+    }
+
     private void init() {
         setTitle("Растения на " + agent.currentUsername);
         setSize(600, 450);
