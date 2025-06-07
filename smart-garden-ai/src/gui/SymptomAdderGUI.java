@@ -20,7 +20,7 @@ public class SymptomAdderGUI extends JFrame {
 
     private void init() {
         setTitle("Добави симптом към " + plantName);
-        setSize(500, 400);
+        setSize(500, 200);
         setLayout(null);
 
         JLabel symptomLabel = new JLabel("Симптом:");
@@ -41,12 +41,12 @@ public class SymptomAdderGUI extends JFrame {
         });
         add(addButton);
 
-        reasoningArea = new JTextArea();
+      /*  reasoningArea = new JTextArea();
         reasoningArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(reasoningArea);
         scrollPane.setBounds(20, 60, 440, 280);
         add(scrollPane);
-
+*/
         setVisible(true);
     }
 }

@@ -32,20 +32,6 @@ public class CareAgent extends Agent {
                     switch (parts[0]) {
 
 
-              /*          case "createPlantModel":
-                            // Формат: createPlantModel:JSON
-                            try {
-                                String json = msg.getContent().substring("createPlantModel:".length());
-                                ObjectMapper mapper = new ObjectMapper();
-                                Plant plantModel = mapper.readValue(json, Plant.class);
-                                ontology.createPlantIndividual(plantModel);
-                                response = "Създадено растение чрез модел: " + plantModel.getName();
-                            } catch (Exception e) {
-                                response = "Грешка при обработка на Plant модел: " + e.getMessage();
-                            }
-                            break;
-
-               */
 
                         case "analyzePlantModel":
                             try {
@@ -147,10 +133,10 @@ public class CareAgent extends Agent {
                             try {
                                 String plantName = parts[1];
 
-                                // 1. Вземи данните от онтологията
+
                                 models.Plant plant = ontology.getPlantByIndividualName(plantName);
 
-                                // 2. Вземи симптомите от базата
+
                                 PlantDAO plantDAO = new PlantDAO();
                                 int plantId = plantDAO.getPlantIdByName(plantName);
                                 Plant fullPlant = null;
@@ -160,7 +146,6 @@ public class CareAgent extends Agent {
                                     plant.setSymptoms(symptoms);
                                 }
 
-                                // 3. Върни комбинирания обект
                                 ObjectMapper mapper = new ObjectMapper();
                                 response = mapper.writeValueAsString(fullPlant);
                             } catch (Exception e) {

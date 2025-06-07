@@ -32,7 +32,6 @@ public class PlantListGUI extends JFrame {
             plantComboBox.addItem(plant.getName());
         }
 
-        // по желание: покажи детайли за първото
         if (!newPlants.isEmpty()) {
             plantComboBox.setSelectedIndex(0);
             showPlantDetails();

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis/"
      xml:base="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis/"
-     xmlns:schema="http://schema.org/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:plant_diagnosis="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:schema="http://schema.org/"
+     xmlns:plant_diagnosis="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis">
         <plant_diagnosis:creator xml:lang="en">Irina Evtimova</plant_diagnosis:creator>
     </owl:Ontology>
@@ -62,9 +63,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
     </owl:ObjectProperty>
     
 
@@ -72,9 +73,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
     </owl:ObjectProperty>
     
 
@@ -82,9 +83,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
     </owl:ObjectProperty>
     
 
@@ -92,8 +93,8 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
     </owl:ObjectProperty>
     
 
@@ -101,9 +102,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasLeafSymptom -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasLeafSymptom">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Plant"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
     </owl:ObjectProperty>
     
 
@@ -111,8 +112,8 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Need"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Plant"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Need"/>
     </owl:ObjectProperty>
     
 
@@ -120,9 +121,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasRootOrSoilSymptom -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasRootOrSoilSymptom">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Plant"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
     </owl:ObjectProperty>
     
 
@@ -130,9 +131,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasStemSymptom -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasStemSymptom">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Plant"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
     </owl:ObjectProperty>
     
 
@@ -149,9 +150,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
     </owl:ObjectProperty>
     
 
@@ -159,9 +160,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
     </owl:ObjectProperty>
     
 
@@ -169,9 +170,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement">
-        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutrientManagementAction"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutrientManagementAction"/>
     </owl:ObjectProperty>
     
 
@@ -179,9 +180,9 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction"/>
-        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
     </owl:ObjectProperty>
     
 
@@ -278,15 +279,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -298,7 +291,15 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -357,7 +358,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AvoidOverwatering">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
     </owl:Class>
     
 
@@ -365,7 +365,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BaseRotFromSoil -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BaseRotFromSoil">
-        <rdfs:label xml:lang="bg">Изгниване на корена в основата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RootOrSoilSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -379,6 +378,8 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LarvaeInSoil"/>
+        <rdfs:label xml:lang="bg">Изгниване на корена в основата</rdfs:label>
     </owl:Class>
     
 
@@ -419,20 +420,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BlackMoldOnLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BlackMoldOnLeaves">
-        <rdfs:label xml:lang="bg">Черна плесен по листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Черна плесен по листата</rdfs:label>
     </owl:Class>
     
 
@@ -440,7 +441,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BrownLeafMargins -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BrownLeafMargins">
-        <rdfs:label xml:lang="bg">Кафяви листни ръбове</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MarginAndEdgeDamage"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -468,6 +468,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafEdgeBurns"/>
+        <rdfs:label xml:lang="bg">Кафяви листни ръбове</rdfs:label>
     </owl:Class>
     
 
@@ -479,29 +480,29 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighLightNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperatureNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -515,29 +516,29 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FrequentWateringNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -551,13 +552,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -570,13 +571,27 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">activity to eliminate the cause</rdfs:comment>
@@ -588,6 +603,18 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Caterpillars">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
@@ -608,18 +635,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -630,13 +645,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresCareAction"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The underlying cause of the symptom</rdfs:comment>
@@ -667,29 +682,29 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FrequentWateringNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -709,6 +724,31 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidity"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighLight"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidity"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperature"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">describes actions aimed at changing the conditions in the environment in which the plant is located</rdfs:comment>
     </owl:Class>
     
@@ -728,6 +768,29 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AvoidOverwatering"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CutOffDamagedRoots"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ImproveDrainage"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IncreaseAirflow"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#InsulateRootZone"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveIndoors"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToBrighterArea"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToIndirectLight"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Transplanting"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">external, non-nutritional environmental factor that can cause a symptom in a plant</rdfs:comment>
@@ -779,6 +842,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterNeed"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
     </owl:Class>
     
 
@@ -787,6 +851,12 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
@@ -804,12 +874,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -856,6 +920,18 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IncreaseAirflow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -866,19 +942,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IncreaseAirflow"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidity"/>
     </owl:Class>
     
 
@@ -919,6 +982,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HumidityNeed"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
     </owl:Class>
     
 
@@ -939,7 +1003,6 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToIndirectLight"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
     </owl:Class>
     
 
@@ -980,6 +1043,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LightNeed"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
     </owl:Class>
     
 
@@ -991,16 +1055,15 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperature"/>
     </owl:Class>
     
 
@@ -1029,6 +1092,7 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#TemperatureNeed"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
     </owl:Class>
     
 
@@ -1045,7 +1109,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ImproveDrainage">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
     </owl:Class>
     
 
@@ -1077,20 +1140,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#InterveinalChlorosis -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#InterveinalChlorosis">
-        <rdfs:label xml:lang="bg">Жълтеене между жилките (интервенална хлороза)</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Жълтеене между жилките (интервенална хлороза)</rdfs:label>
     </owl:Class>
     
 
@@ -1116,6 +1179,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1126,12 +1195,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1139,7 +1202,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LarvaeInSoil -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LarvaeInSoil">
-        <rdfs:label xml:lang="bg">Ларви в почвата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RootOrSoilSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1166,6 +1228,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Ларви в почвата</rdfs:label>
     </owl:Class>
     
 
@@ -1173,8 +1236,13 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafCurling -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafCurling">
-        <rdfs:label xml:lang="bg">Листата се къдрят</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafFormDeformation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
@@ -1183,8 +1251,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1194,20 +1262,15 @@
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
                             <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WiltedLeaves"/>
+        <rdfs:label xml:lang="bg">Листата се къдрят</rdfs:label>
     </owl:Class>
     
 
@@ -1215,12 +1278,17 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafEdgeBurns -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafEdgeBurns">
-        <rdfs:label xml:lang="bg">Изгорели листни ръбове</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MarginAndEdgeDamage"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighLight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1236,12 +1304,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Изгорели листни ръбове</rdfs:label>
     </owl:Class>
     
 
@@ -1257,12 +1320,17 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafHoles -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafHoles">
-        <rdfs:label xml:lang="bg">Дупки по листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Beetles"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Caterpillars"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1278,12 +1346,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Caterpillars"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Дупки по листата</rdfs:label>
     </owl:Class>
     
 
@@ -1291,20 +1354,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafPaleAndElongated -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafPaleAndElongated">
-        <rdfs:label xml:lang="bg">Издължени и светли листа</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Издължени и светли листа</rdfs:label>
     </owl:Class>
     
 
@@ -1312,8 +1375,13 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafReddishPurpleTinge -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafReddishPurpleTinge">
-        <rdfs:label xml:lang="bg">Червеникави или виолетови тонове по долната страна на листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
@@ -1322,8 +1390,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PhosphorusDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1340,12 +1408,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PhosphorusDeficiency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Червеникави или виолетови тонове по долната страна на листата</rdfs:label>
     </owl:Class>
     
 
@@ -1361,18 +1424,17 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafYellowing -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafYellowing">
-        <rdfs:label xml:lang="bg">Пожълтяване (хлороза)</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1388,6 +1450,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Пожълтяване (хлороза)</rdfs:label>
     </owl:Class>
     
 
@@ -1407,13 +1470,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1533,6 +1596,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveIndoors"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1541,12 +1610,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveIndoors"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1606,6 +1669,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1614,12 +1683,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1646,7 +1709,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveIndoors">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
     </owl:Class>
     
 
@@ -1655,7 +1717,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToBrighterArea">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToIndirectLight"/>
     </owl:Class>
     
 
@@ -1716,6 +1777,29 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutrientManagementAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CalciumDeficiency"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PhosphorusDeficiency"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PotassiumDeficiency"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">which describes actions aimed at restoring the balance of nutrients in the plant through feeding</rdfs:comment>
     </owl:Class>
     
@@ -1737,6 +1821,23 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutrientManagementAction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresNutrientManagement"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyIronChelate"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyMagnesiumSalt"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyNitrogenFertilizer"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyPotassiumFertilizer"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">deficiency or imbalance of nutrients in the soil or plant that leads to visible symptoms</rdfs:comment>
     </owl:Class>
     
@@ -1753,20 +1854,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OldLeavesYellowNewGreen -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OldLeavesYellowNewGreen">
-        <rdfs:label xml:lang="bg">Пожълтяване на старите листа, новите остават зелени</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Пожълтяване на старите листа, новите остават зелени</rdfs:label>
     </owl:Class>
     
 
@@ -1778,29 +1879,29 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FrequentWateringNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperatureNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperatureNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1814,6 +1915,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AvoidOverwatering"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CutOffDamagedRoots"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1821,12 +1928,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ImproveDrainage"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AvoidOverwatering"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1854,13 +1955,37 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AlcoholSwab"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#DryOutSoil"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ManualRemoval"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OilSpray"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveDamagedLeaves"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveInfectedParts"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyTraps"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#VacuumInsects"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">the causes of symptoms related to pest attacks – insects, mites, larvae, etc., that damage the plant</rdfs:comment>
@@ -1872,6 +1997,35 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CareAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#treatsCause"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Beetles"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Caterpillars"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungusGnats"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyMildew"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ScaleInsects"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpiderMites"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Whiteflies"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Wireworms"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">actions, that are intended to eliminate, repel or limit the pest and stop damage to the plant</rdfs:comment>
     </owl:Class>
     
@@ -1910,66 +2064,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Plant">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterNeed"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#TemperatureNeed"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperatureNeed"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FrequentWateringNeed"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:onClass>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HumidityNeed"/>
             </owl:Restriction>
@@ -1982,13 +2076,74 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#TemperatureNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Symptom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasSymptom"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafSymptom"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RootOrSoilSymptom"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSymptom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FrequentWateringNeed"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidityNeed"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onClass>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -1997,7 +2152,20 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperatureNeed"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2050,6 +2218,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveInfectedParts"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2060,12 +2234,6 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveInfectedParts"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2073,7 +2241,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyWhiteSubstanceOnLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyWhiteSubstanceOnLeaves">
-        <rdfs:label xml:lang="bg">Прахообразно бяло вещество по листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2087,6 +2254,7 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyMildew"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Прахообразно бяло вещество по листата</rdfs:label>
     </owl:Class>
     
 
@@ -2094,20 +2262,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PunctureMarksOnLeavesAndStems -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PunctureMarksOnLeavesAndStems">
-        <rdfs:label xml:lang="bg">Прободи по листата и стъблата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Прободи по листата и стъблата</rdfs:label>
     </owl:Class>
     
 
@@ -2119,13 +2287,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#DryOutSoil"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#DryOutSoil"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2222,21 +2390,6 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AlcoholSwab"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ManualRemoval"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OilSpray"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ManualRemoval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2252,6 +2405,21 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OilSpray"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AlcoholSwab"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ManualRemoval"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OilSpray"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2259,20 +2427,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ShellBugsOnLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ShellBugsOnLeaves">
-        <rdfs:label xml:lang="bg">Черупковидни буболечки по листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ScaleInsects"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ScaleInsects"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ScaleInsects"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Черупковидни буболечки по листата</rdfs:label>
     </owl:Class>
     
 
@@ -2284,29 +2452,29 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidityNeed"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLightNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperatureNeed"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasNeed"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RareWateringNeed"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2328,13 +2496,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2357,7 +2525,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpreadingBrownYellowPatches -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpreadingBrownYellowPatches">
-        <rdfs:label xml:lang="bg">Жълто-кафяви петна по листата, които се разпространяват</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2371,6 +2538,7 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PotassiumDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Жълто-кафяви петна по листата, които се разпространяват</rdfs:label>
     </owl:Class>
     
 
@@ -2378,8 +2546,19 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemBlackeningAtBase -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemBlackeningAtBase">
-        <rdfs:label xml:lang="bg">Почерняване на стъблото в основата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSymptom"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
@@ -2393,18 +2572,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Почерняване на стъблото в основата</rdfs:label>
     </owl:Class>
     
 
@@ -2412,8 +2580,13 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemCracking -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemCracking">
-        <rdfs:label xml:lang="bg">Напукване на стъблото</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSymptom"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
@@ -2424,12 +2597,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2447,6 +2614,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSofteningAndCollapse"/>
+        <rdfs:label xml:lang="bg">Напукване на стъблото</rdfs:label>
     </owl:Class>
     
 
@@ -2454,18 +2622,17 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSofteningAndCollapse -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSofteningAndCollapse">
-        <rdfs:label xml:lang="bg">Омекване на стъблото</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2481,6 +2648,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Омекване на стъблото</rdfs:label>
     </owl:Class>
     
 
@@ -2496,20 +2664,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyLeavesWithBlackMold -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyLeavesWithBlackMold">
-        <rdfs:label xml:lang="bg">Лепкави листа с черна плесен</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Лепкави листа с черна плесен</rdfs:label>
     </owl:Class>
     
 
@@ -2528,13 +2696,27 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#hasCause"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cause"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2556,15 +2738,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:allValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveDamagedLeaves"/>
-                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyTraps"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:allValuesFrom>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2582,7 +2756,15 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveDamagedLeaves"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyTraps"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2620,6 +2802,18 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Transplanting"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -2628,18 +2822,6 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Transplanting"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresEnvironmentAdjustment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2665,20 +2847,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WebbingAndSpotsOnLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WebbingAndSpotsOnLeaves">
-        <rdfs:label xml:lang="bg">Паяжини и петна по листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpiderMites"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpiderMites"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByPest"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpiderMites"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Паяжини и петна по листата</rdfs:label>
     </owl:Class>
     
 
@@ -2690,7 +2872,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#VacuumInsects"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2702,7 +2884,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#VacuumInsects"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2726,7 +2908,6 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WhitefliesFlyingFromLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WhitefliesFlyingFromLeaves">
-        <rdfs:label xml:lang="bg">Белокрилки, летящи от листата</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2740,6 +2921,7 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Whiteflies"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Белокрилки, летящи от листата</rdfs:label>
     </owl:Class>
     
 
@@ -2747,8 +2929,19 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WiltedLeaves -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WiltedLeaves">
-        <rdfs:label xml:lang="bg">Увехнали листа</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafFormDeformation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperature"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
@@ -2758,7 +2951,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2776,18 +2969,7 @@
                 </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperature"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByEnvironment"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Увехнали листа</rdfs:label>
     </owl:Class>
     
 
@@ -2799,13 +2981,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#requiresPestControl"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2815,20 +2997,20 @@
     <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#YoungLeavesYellowDeformed -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#YoungLeavesYellowDeformed">
-        <rdfs:label xml:lang="bg">Жълти, деформирани млади листа</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
-                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#causedByNutritionDeficiency"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="bg">Жълти, деформирани млади листа</rdfs:label>
     </owl:Class>
     
 
@@ -2844,6 +3026,21 @@
     
 
 
+    <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#myCyclamen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#myCyclamen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cyclamen"/>
+        <plant_diagnosis:hasSymptom rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#newSymptom"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#newSymptom -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#newSymptom">
+        <rdf:type rdf:resource="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#InterveinalChlorosis"/>
+    </owl:NamedIndividual>
+    
 
 
     <!-- 
@@ -2854,6 +3051,150 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AlcoholSwab"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyFungicide"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#DryOutSoil"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Insecticide"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IntroducePredator"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ManualRemoval"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NeemOilSpray"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#OilSpray"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveDamagedLeaves"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RemoveInfectedParts"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SoilDrench"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyTraps"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#VacuumInsects"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Aphids"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Beetles"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Caterpillars"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungalInfection"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FungusGnats"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyMildew"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Pythium"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ScaleInsects"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SpiderMites"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Thrips"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Whiteflies"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Wireworms"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyCalcium"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyIronChelate"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyMagnesiumSalt"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyNitrogenFertilizer"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ApplyPotassiumFertilizer"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#FoliarSpray"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#AvoidOverwatering"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CutOffDamagedRoots"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ImproveDrainage"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IncreaseAirflow"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#InsulateRootZone"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveIndoors"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToBrighterArea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToCoolerPlace"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MoveToIndirectLight"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Transplanting"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#UseHumidifier"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Watering"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#BlackMoldOnLeaves"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafHoles"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PowderyWhiteSubstanceOnLeaves"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PunctureMarksOnLeavesAndStems"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ShellBugsOnLeaves"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StickyLeavesWithBlackMold"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WebbingAndSpotsOnLeaves"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WhitefliesFlyingFromLeaves"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cactus"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Calathea"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Cyclamen"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Orchid"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#SnakePlant"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CalciumDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PhosphorusDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PotassiumDeficiency"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#ColorChangeSymptom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafFormDeformation"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MarginAndEdgeDamage"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestRelatedLeafSymptom"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentAdjustmentAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutrientManagementAction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestControlAction"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#EnvironmentCause"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NutritionCause"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PestCause"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighHumidity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighLight"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HighTemperature"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowHumidity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowLight"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LowTemperature"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#Overwatering"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterDeficiency"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#HumidityNeed"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LightNeed"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#TemperatureNeed"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#WaterNeed"/>
+        </owl:members>
+    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
@@ -2869,17 +3210,22 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#CalciumDeficiency"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#IronDeficiency"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#MagnesiumDeficiency"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#NitrogenDeficiency"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PhosphorusDeficiency"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#PotassiumDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#LeafSymptom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#RootOrSoilSymptom"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSymptom"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemBlackeningAtBase"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemCracking"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/irrae/ontologies/2025/1/plant_diagnosis#StemSofteningAndCollapse"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
 
