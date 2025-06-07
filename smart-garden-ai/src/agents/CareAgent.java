@@ -29,7 +29,7 @@ public class CareAgent extends Agent {
                     String[] parts = msg.getContent().split(":");
                     String response = "";
 
-                   switch (parts[0]) {
+                    switch (parts[0]) {
 
 
               /*          case "createPlantModel":
@@ -47,89 +47,127 @@ public class CareAgent extends Agent {
 
                */
 
-                       case "analyzePlantModel":
-                           try {
-                               String json = msg.getContent().substring("analyzePlantModel:".length());
-                               ObjectMapper mapper = new ObjectMapper();
-                               PlantRequestWrapper wrapper = mapper.readValue(json, PlantRequestWrapper.class);
-                               Plant plantModel = wrapper.getPlant();
+                        case "analyzePlantModel":
+                            try {
+                                String json = msg.getContent().substring("analyzePlantModel:".length());
+                                ObjectMapper mapper = new ObjectMapper();
+                                PlantRequestWrapper wrapper = mapper.readValue(json, PlantRequestWrapper.class);
+                                Plant plantModel = wrapper.getPlant();
 
-                               int userId = wrapper.getUserId();
+                                int userId = wrapper.getUserId();
 
-                               ontology.createPlantIndividual(plantModel);
+                                ontology.createPlantIndividual(plantModel);
 
-                               Plant fullPlant = ontology.getPlantByIndividualName(plantModel.getName());
-
-
-                               //save in DB
-                               PlantDAO plantDAO = new PlantDAO();
-                               int plantId = plantDAO.savePlant(fullPlant, userId);
-
-                               if (plantModel.getSymptoms() != null) {
-
-                                   for (String symptom : plantModel.getSymptoms()) {
-                                       plantDAO.saveSymptom(symptom, plantId);
-                                   }
-                               }
+                                Plant fullPlant = ontology.getPlantByIndividualName(plantModel.getName());
 
 
-                               //съвети
-                               List<String> advice = ontology.getAdviceForPlantIndividual(plantModel.getName());
-                               response = String.join("\n", advice);
+                                //save in DB
+                              PlantDAO plantDAO = new PlantDAO();
+                               // int plantId = plantDAO.savePlant(fullPlant, userId);
+                                int existingId = plantDAO.getPlantIdByName(plantModel.getName());
+
+                                int plantId;
+                                if (existingId != -1) {
+                                    plantId = existingId;
+                                    System.out.println("⚠️ Растение вече съществува: " + plantModel.getName());
+                                    plantDAO.updatePlantNeedsAndType(fullPlant, plantId);
 
 
-                           } catch (Exception e) {
-                               response = "Грешка при анализ: " + e.getMessage();
-                           }
-                           break;
+                                    plantDAO.deleteSymptomsByPlantId(plantId);
+                                    if (plantModel.getSymptoms() != null) {
+                                        for (String symptom : plantModel.getSymptoms()) {
+                                            plantDAO.saveSymptom(symptom, plantId);
+                                        }
+                                    }
+                                } else {
+                                    plantId = plantDAO.savePlant(fullPlant, userId);
+                                }
+
+
+                                //съвети
+                                List<String> advice = ontology.getAdviceForPlantIndividual(plantModel.getName());
+                                response = String.join("\n", advice);
+
+
+                            } catch (Exception e) {
+                                response = "Грешка при анализ: " + e.getMessage();
+                            }
+                            break;
+
+                        case "addSymptomReasoning":
+                            try {
+                                String json = msg.getContent().substring("addSymptomReasoning:".length());
+                                ObjectMapper mapper = new ObjectMapper();
+                                PlantRequestWrapper wrapper = mapper.readValue(json, PlantRequestWrapper.class);
+                                Plant plant = wrapper.getPlant();
+
+
+                                PlantDAO dao = new PlantDAO();
+                                int plantId = dao.getPlantIdByName(plant.getName());
+                                if (plantId != -1) {
+                                    for (String symptom : plant.getSymptoms()) {
+                                        dao.saveSymptom(symptom, plantId);
+                                    }
+                                }
+
+                                List<String> reasoning = ontology.getAdviceForPlantIndividual(plant.getName());
+                                response = String.join("\n", reasoning);
+                            } catch (Exception e) {
+                                response = "Грешка при reasoning: " + e.getMessage();
+                            }
+                            break;
 
 
                         case "getPlant":
-                            // Формат: getPlant:orchid1
-                            models.Plant plant = ontology.getPlantByIndividualName(parts[1]);
-                            response = plant.toString();
+                            try {
+                                models.Plant plant = ontology.getPlantByIndividualName(parts[1]);
+                                ObjectMapper mapper = new ObjectMapper();
+                                response = mapper.writeValueAsString(plant);
+                            } catch (Exception e) {
+                                response = "Грешка при сериализация: " + e.getMessage();
+                            }
                             break;
 
-                         case "removePlant":
+                        case "removePlant":
                             try {
                                 String json = msg.getContent().substring("removePlant:".length());
-                                 ObjectMapper mapper = new ObjectMapper();
-                                 Plant plantModel = mapper.readValue(json, Plant.class);
+                                ObjectMapper mapper = new ObjectMapper();
+                                Plant plantModel = mapper.readValue(json, Plant.class);
 
-                                 ontology.removePlantAndSymptoms(plantModel.getName(), plantModel.getSymptoms());
-                                 response = "Растението и симптомите са премахнати: " + plantModel.getName();
+                                ontology.removePlantAndSymptoms(plantModel.getName(), plantModel.getSymptoms());
+                                response = "Растението и симптомите са премахнати: " + plantModel.getName();
                             } catch (Exception e) {
-                                 response = "Грешка при изтриване: " + e.getMessage();
-                                }
+                                response = "Грешка при изтриване: " + e.getMessage();
+                            }
                             break;
 
-                       case "getPlantsByUserId":
-                           try {
-                               int userId = Integer.parseInt(parts[1]);
-                               PlantDAO plantDAO = new PlantDAO();
-                               List<Plant> plants = plantDAO.getPlantsByUserId(userId);
+                        case "getPlantsByUserId":
+                            try {
+                                int userId = Integer.parseInt(parts[1]);
+                                PlantDAO plantDAO = new PlantDAO();
+                                List<Plant> plants = plantDAO.getPlantsByUserId(userId);
 
-                               ObjectMapper mapper = new ObjectMapper();
-                               response = mapper.writeValueAsString(plants);
+                                ObjectMapper mapper = new ObjectMapper();
+                                response = mapper.writeValueAsString(plants);
 
-                           } catch (Exception e) {
-                               response = "Грешка при взимане на растения: " + e.getMessage();
-                           }
-                           break;
+                            } catch (Exception e) {
+                                response = "Грешка при взимане на растения: " + e.getMessage();
+                            }
+                            break;
 
-                       case "getSymptomsByPlantId":
-                           try {
-                               int plantId = Integer.parseInt(parts[1]);
-                               PlantDAO plantDAO = new PlantDAO();
-                               List<String> symptoms = plantDAO.getSymptomsByPlantId(plantId);
+                        case "getSymptomsByPlantId":
+                            try {
+                                int plantId = Integer.parseInt(parts[1]);
+                                PlantDAO plantDAO = new PlantDAO();
+                                List<String> symptoms = plantDAO.getSymptomsByPlantId(plantId);
 
-                               ObjectMapper mapper = new ObjectMapper();
-                               response = mapper.writeValueAsString(symptoms);
+                                ObjectMapper mapper = new ObjectMapper();
+                                response = mapper.writeValueAsString(symptoms);
 
-                           } catch (Exception e) {
-                               response = "Грешка при взимане на симптоми: " + e.getMessage();
-                           }
-                           break;
+                            } catch (Exception e) {
+                                response = "Грешка при взимане на симптоми: " + e.getMessage();
+                            }
+                            break;
 
 
 
@@ -140,6 +178,12 @@ public class CareAgent extends Agent {
                     ACLMessage reply = msg.createReply();
                     reply.setPerformative(ACLMessage.INFORM);
                     reply.setContent(response);
+
+
+                    String convId = msg.getConversationId();
+                    if (convId != null) {
+                        reply.setConversationId(convId);
+                    }
                     send(reply);
                 } else {
                     block();

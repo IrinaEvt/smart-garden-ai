@@ -33,6 +33,32 @@ public class PlantDAO {
         return plantId;
     }
 
+    public void deleteSymptomsByPlantId(int plantId) throws SQLException {
+        try (Connection conn = DBManager.getConnection()) {
+            String sql = "DELETE FROM symptom WHERE plant_id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, plantId);
+            stmt.executeUpdate();
+        }
+    }
+
+    public void updatePlantNeedsAndType(Plant plant, int plantId) throws SQLException {
+        String sql = "UPDATE plant SET type = ?, soil_moisture = ?, temperature = ?, humidity = ?, light = ? WHERE id = ?";
+
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, plant.getType());
+            stmt.setString(2, plant.getSoilMoisture());
+            stmt.setString(3, plant.getTemperature());
+            stmt.setString(4, plant.getHumidity());
+            stmt.setString(5, plant.getLight());
+            stmt.setInt(6, plantId);
+
+            stmt.executeUpdate();
+        }
+    }
+
     public void saveSymptom(String symptom, int plantId) throws SQLException {
         try (Connection conn = DBManager.getConnection()) {
             String sql = "INSERT INTO symptom (name, plant_id) VALUES (?, ?)";

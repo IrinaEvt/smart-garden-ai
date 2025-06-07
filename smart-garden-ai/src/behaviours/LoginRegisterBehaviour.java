@@ -1,10 +1,14 @@
 package behaviours;
 
 import agents.UserAgent;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.UserDAO;
 import jade.core.behaviours.OneShotBehaviour;
+import models.Plant;
 
 import javax.swing.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class LoginRegisterBehaviour extends OneShotBehaviour {
@@ -43,7 +47,18 @@ public class LoginRegisterBehaviour extends OneShotBehaviour {
                     SwingUtilities.invokeLater(() -> ua.loginGUI.dispose());
                 }
 
-                SwingUtilities.invokeLater(() -> new gui.PlantClientGUI(ua)); // старт на Plant GUI
+                ua.requestPlantsForUser(plantsJson -> {
+                    try {
+                        ObjectMapper mapper = new ObjectMapper();
+                        System.out.println("JSON съдържание:");
+                        System.out.println(plantsJson);
+                        Plant[] plantArray = mapper.readValue(plantsJson, Plant[].class);
+                        List<Plant> plants = Arrays.asList(plantArray);
+                        SwingUtilities.invokeLater(() -> new gui.PlantListGUI(ua, plants));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                });// старт на Plant GUI
             } else {
                 System.out.println("❌ Невалидни данни.");
                 myAgent.doDelete();
