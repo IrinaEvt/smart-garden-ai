@@ -36,6 +36,8 @@ public class SymptomAdderGUI extends JFrame {
         addButton.addActionListener(e -> {
             String symptom = symptomField.getText();
             agent.addSymptomToPlant(plantName, symptom, reasoning -> reasoningArea.setText(reasoning));
+
+            this.dispose();
         });
         add(addButton);
 

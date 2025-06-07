@@ -105,6 +105,34 @@ public class PlantDAO {
         return plants;
     }
 
+    public Plant getPlantById(int plantId) throws SQLException {
+        Plant plant = null;
+
+        String query = "SELECT id, name, type, soil_moisture, temperature, humidity, light FROM plant WHERE id = ?";
+        try (Connection conn = DBManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, plantId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                plant = new Plant();
+                plant.setName(rs.getString("name"));
+                plant.setType(rs.getString("type"));
+                plant.setSoilMoisture(rs.getString("soil_moisture"));
+                plant.setTemperature(rs.getString("temperature"));
+                plant.setHumidity(rs.getString("humidity"));
+                plant.setLight(rs.getString("light"));
+
+                // вземи симптомите
+                List<String> symptoms = getSymptomsByPlantId(plantId);
+                plant.setSymptoms(symptoms);
+            }
+        }
+
+        return plant;
+    }
+
     public List<String> getSymptomsByPlantId(int plantId) throws SQLException {
         List<String> symptoms = new ArrayList<>();
         String query = "SELECT name FROM symptom WHERE plant_id = ?";

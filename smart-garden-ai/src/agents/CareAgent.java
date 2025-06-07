@@ -94,6 +94,25 @@ public class CareAgent extends Agent {
                             }
                             break;
 
+                        case "getFullPlantDetails":
+                            try {
+                                String plantName = parts[1];
+                                PlantDAO dao = new PlantDAO();
+                                int plantId = dao.getPlantIdByName(plantName);
+
+                                Plant fullPlant = ontology.getPlantByIndividualName(plantName);
+                                if (plantId != -1) {
+                                    List<String> symptoms = dao.getSymptomsByPlantId(plantId);
+                                    fullPlant.setSymptoms(symptoms);
+                                }
+
+                                ObjectMapper mapper = new ObjectMapper();
+                                response = mapper.writeValueAsString(fullPlant);
+                            } catch (Exception e) {
+                                response = "Грешка при взимане на пълни детайли: " + e.getMessage();
+                            }
+                            break;
+
                         case "addSymptomReasoning":
                             try {
                                 String json = msg.getContent().substring("addSymptomReasoning:".length());
@@ -105,13 +124,18 @@ public class CareAgent extends Agent {
                                 PlantDAO dao = new PlantDAO();
                                 int plantId = dao.getPlantIdByName(plant.getName());
                                 if (plantId != -1) {
+                                    dao.deleteSymptomsByPlantId(plantId); //
                                     for (String symptom : plant.getSymptoms()) {
                                         dao.saveSymptom(symptom, plantId);
                                     }
                                 }
 
+                               // ontology.createPlantIndividual(plant);
                                 List<String> reasoning = ontology.getAdviceForPlantIndividual(plant.getName());
+
+                                System.out.println("📘 Reasoning резултат: " + reasoning);
                                 response = String.join("\n", reasoning);
+
                             } catch (Exception e) {
                                 response = "Грешка при reasoning: " + e.getMessage();
                             }
@@ -120,9 +144,24 @@ public class CareAgent extends Agent {
 
                         case "getPlant":
                             try {
-                                models.Plant plant = ontology.getPlantByIndividualName(parts[1]);
+                                String plantName = parts[1];
+
+                                // 1. Вземи данните от онтологията
+                                models.Plant plant = ontology.getPlantByIndividualName(plantName);
+
+                                // 2. Вземи симптомите от базата
+                                PlantDAO plantDAO = new PlantDAO();
+                                int plantId = plantDAO.getPlantIdByName(plantName);
+                                Plant fullPlant = null;
+                                if (plantId != -1) {
+                                    fullPlant = plantDAO.getPlantById(plantId);
+                                    List<String> symptoms = plantDAO.getSymptomsByPlantId(plantId);
+                                    plant.setSymptoms(symptoms);
+                                }
+
+                                // 3. Върни комбинирания обект
                                 ObjectMapper mapper = new ObjectMapper();
-                                response = mapper.writeValueAsString(plant);
+                                response = mapper.writeValueAsString(fullPlant);
                             } catch (Exception e) {
                                 response = "Грешка при сериализация: " + e.getMessage();
                             }

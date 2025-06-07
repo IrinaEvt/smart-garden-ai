@@ -155,9 +155,12 @@ public class UserAgent extends Agent {
 
             requestPlantDetails(plantName, plantStr -> {
                 try {
+                    System.out.println("📦 JSON от CareAgent: " + plantStr);
                     ObjectMapper mapper = new ObjectMapper();
                     Plant plant = mapper.readValue(plantStr, Plant.class);
-                    plant.getSymptoms().add(symptom); // добави новия симптом
+                    if (!plant.getSymptoms().contains(symptom)) {
+                        plant.getSymptoms().add(symptom);
+                    }
 
                     PlantRequestWrapper wrapper = new PlantRequestWrapper();
                     wrapper.setPlant(plant);
@@ -182,6 +185,42 @@ public class UserAgent extends Agent {
         }
     }
 
+    public void requestReasoningForPlant(String plantName, Consumer<String> callback) {
+        requestPlantDetails(plantName, plantJson -> {
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                Plant plant = mapper.readValue(plantJson, Plant.class);
+
+                // Създай обвивка за reasoning
+                PlantRequestWrapper wrapper = new PlantRequestWrapper();
+                wrapper.setPlant(plant);
+                wrapper.setUserId(currentUserId); // ако е нужно
+
+                String json = mapper.writeValueAsString(wrapper);
+
+                ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+                msg.addReceiver(getAID("care"));
+                msg.setContent("addSymptomReasoning:" + json); // използваме същата логика
+                String convId = "reasoningOnly_" + plantName + "_" + System.currentTimeMillis();
+                msg.setConversationId(convId);
+                pendingResponses.put(convId, callback);
+                send(msg);
+            } catch (Exception e) {
+                callback.accept("⚠ Грешка при reasoning заявка: " + e.getMessage());
+            }
+        });
+    }
+
+
+    public void requestPlantDetailsFromDB(String plantName, Consumer<String> callback) {
+        ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
+        msg.addReceiver(getAID("care"));
+        msg.setContent("getFullPlantDetails:" + plantName); // нова команда
+        String convId = "plantFromDB_" + plantName + "_" + System.currentTimeMillis();
+        msg.setConversationId(convId);
+        pendingResponses.put(convId, callback);
+        send(msg);
+    }
 
 
     public void requestSymptomsByPlantId(String plantId) {
