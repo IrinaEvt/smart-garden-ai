@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class PlantListGUI extends JFrame {
-    private UserAgent agent;
+    private  UserAgent agent;
     private JComboBox<String> plantComboBox;
     private JTextArea plantDetailsArea;
-    private JTextArea symptomsArea;
     private JButton addSymptomButton, createPlantButton;
+
+    private JList<String> symptomList;
+    private DefaultListModel<String> symptomListModel;
 
     private List<Plant> userPlants;
 
@@ -55,21 +57,35 @@ public class PlantListGUI extends JFrame {
         symptomsLabel.setBounds(20, 200, 100, 25);
         add(symptomsLabel);
 
-        symptomsArea = new JTextArea();
-        symptomsArea.setEditable(false);
-        JScrollPane symptomsScroll = new JScrollPane(symptomsArea);
+        symptomListModel = new DefaultListModel<>();
+        symptomList = new JList<>(symptomListModel);
+        symptomList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane symptomsScroll = new JScrollPane(symptomList);
         symptomsScroll.setBounds(120, 200, 440, 60);
         add(symptomsScroll);
+
+        // reasoning при клик
+        symptomList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                String selectedSymptom = symptomList.getSelectedValue();
+                String selectedPlant = (String) plantComboBox.getSelectedItem();
+
+                if (selectedSymptom != null && !selectedSymptom.equals("Няма записани симптоми.") && selectedPlant != null) {
+                    agent.requestReasoningForPlant(selectedPlant, reasoning -> {
+                        JOptionPane.showMessageDialog(this, reasoning, "Съвет за " + selectedPlant, JOptionPane.INFORMATION_MESSAGE);
+                    });
+                }
+            }
+        });
 
         addSymptomButton = new JButton("➕ Добави симптом");
         addSymptomButton.setBounds(20, 280, 200, 30);
         addSymptomButton.addActionListener(onAddSymptom);
+        add(addSymptomButton);
 
         createPlantButton = new JButton("🌱 Създай растение");
         createPlantButton.setBounds(240, 280, 200, 30);
         createPlantButton.addActionListener(onCreatePlant);
-
-        add(addSymptomButton);
         add(createPlantButton);
 
         setVisible(true);
@@ -83,17 +99,6 @@ public class PlantListGUI extends JFrame {
                     ObjectMapper mapper = new ObjectMapper();
                     Plant plant = mapper.readValue(details, Plant.class);
 
-
-
-                    System.out.println("✅ DEBUG: Получен JSON от агента: " + details);
-                    System.out.println("✅ DEBUG: Plant обект:");
-                    System.out.println("Име: " + plant.getName());
-                    System.out.println("Тип: " + plant.getType());
-                    System.out.println("Почвена влага: " + plant.getSoilMoisture());
-                    System.out.println("Температура: " + plant.getTemperature());
-                    System.out.println("Влажност: " + plant.getHumidity());
-                    System.out.println("Светлина: " + plant.getLight());
-
                     StringBuilder info = new StringBuilder();
                     info.append("Име: ").append(plant.getName()).append("\n");
                     info.append("Тип: ").append(plant.getType()).append("\n");
@@ -104,20 +109,19 @@ public class PlantListGUI extends JFrame {
 
                     plantDetailsArea.setText(info.toString());
 
-                    // Симптоми
                     List<String> symptoms = plant.getSymptoms();
+                    symptomListModel.clear();
                     if (symptoms == null || symptoms.isEmpty()) {
-                        symptomsArea.setText("Няма записани симптоми.");
+                        symptomListModel.addElement("Няма записани симптоми.");
                     } else {
-                        StringBuilder sb = new StringBuilder();
                         for (String s : symptoms) {
-                            sb.append("• ").append(s).append("\n");
+                            symptomListModel.addElement(s);
                         }
-                        symptomsArea.setText(sb.toString());
                     }
                 } catch (Exception e) {
                     plantDetailsArea.setText("Грешка при визуализация: " + e.getMessage());
-                    symptomsArea.setText("");
+                    symptomListModel.clear();
+                    symptomListModel.addElement("⚠️ Грешка при зареждане на симптоми.");
                 }
             });
         }
@@ -126,11 +130,10 @@ public class PlantListGUI extends JFrame {
     private final ActionListener onAddSymptom = e -> {
         String selectedPlant = (String) plantComboBox.getSelectedItem();
         if (selectedPlant != null) {
-            new gui.SymptomAdderGUI(agent, selectedPlant) {
+            new SymptomAdderGUI(agent, selectedPlant) {
                 @Override
                 public void dispose() {
                     super.dispose();
-                    // След затваряне на прозореца – обнови симптомите
                     SwingUtilities.invokeLater(() -> showPlantDetails());
                 }
             };

@@ -130,7 +130,8 @@ public class CareAgent extends Agent {
                                     }
                                 }
 
-                               // ontology.createPlantIndividual(plant);
+                                ontology.createPlantIndividual(plant);
+                                ontology.getAdviceForPlantIndividual(plant.getName());
                                 List<String> reasoning = ontology.getAdviceForPlantIndividual(plant.getName());
 
                                 System.out.println("📘 Reasoning резултат: " + reasoning);
