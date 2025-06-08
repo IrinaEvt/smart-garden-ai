@@ -41,12 +41,13 @@ public class SymptomAdderGUI extends JFrame {
         });
         add(addButton);
 
-      /*  reasoningArea = new JTextArea();
+        reasoningArea = new JTextArea();
         reasoningArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(reasoningArea);
-        scrollPane.setBounds(20, 60, 440, 280);
-        add(scrollPane);
-*/
+        reasoningArea.setLineWrap(true);
+        reasoningArea.setWrapStyleWord(true);
+        reasoningArea.setBounds(20, 60, 420, 80);
+        add(reasoningArea);
+
         setVisible(true);
     }
 }

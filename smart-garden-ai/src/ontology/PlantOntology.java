@@ -52,13 +52,13 @@ public class PlantOntology {
 
 
     public void createPlantIndividual(models.Plant plant) {
-        // 1. Създаване на индивид на растението
+
         OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plant.getName()));
 
-        // 2. Деклариране на клас (тип) на растението
+
         OWLClass plantType = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + plant.getType()));
         if (!plantOntology.containsClassInSignature(plantType.getIRI())) {
-            // Ако класът не съществува – го декларираме
+
             OWLDeclarationAxiom declareClass = dataFactory.getOWLDeclarationAxiom(plantType);
             ontoManager.applyChange(new AddAxiom(plantOntology, declareClass));
         }
@@ -90,11 +90,11 @@ public class PlantOntology {
         OWLNamedIndividual symptomIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + symptomIndivName));
         OWLClass symptomClass = dataFactory.getOWLClass(IRI.create(ontologyIRIStr + symptomClassName));
 
-        // Само създаване на индивид от клас, без декларация за самия клас
+
         OWLClassAssertionAxiom classAssertion = dataFactory.getOWLClassAssertionAxiom(symptomClass, symptomIndiv);
         ontoManager.applyChange(new AddAxiom(plantOntology, classAssertion));
 
-        // Свързване със симптома
+
         OWLObjectProperty hasSymptom = dataFactory.getOWLObjectProperty(IRI.create(ontologyIRIStr + "hasSymptom"));
         OWLObjectPropertyAssertionAxiom link = dataFactory.getOWLObjectPropertyAssertionAxiom(hasSymptom, plantIndiv, symptomIndiv);
         ontoManager.applyChange(new AddAxiom(plantOntology, link));
@@ -172,11 +172,11 @@ public class PlantOntology {
     public void removePlantAndSymptoms(String plantName, List<String> symptomNames) {
         OWLEntityRemover remover = new OWLEntityRemover(ontoManager, plantOntology.getImportsClosure());
 
-        // Премахване на растението
+
         OWLNamedIndividual plantIndiv = dataFactory.getOWLNamedIndividual(IRI.create(ontologyIRIStr + plantName));
         plantIndiv.accept(remover);
 
-        // Премахване на симптомите
+
         if (symptomNames != null) {
             for (String symptom : symptomNames) {
                 String symptomIndivName = plantName + "_" + symptom;

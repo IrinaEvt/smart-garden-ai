@@ -9,7 +9,7 @@ import models.Plant;
 import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class LoginRegisterBehaviour extends OneShotBehaviour {
 
@@ -56,7 +56,7 @@ public class LoginRegisterBehaviour extends OneShotBehaviour {
                         List<Plant> plants = Arrays.asList(plantArray);
                         SwingUtilities.invokeLater(() -> {
                             gui.PlantListGUI gui = new gui.PlantListGUI(ua, plants);
-                            ua.setPlantListGUI(gui);  // ⬅️ това ти трябва!
+                            ua.setPlantListGUI(gui);
                         });
                     } catch (Exception ex) {
                         ex.printStackTrace();

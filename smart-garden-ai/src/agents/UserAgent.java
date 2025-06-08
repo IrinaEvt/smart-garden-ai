@@ -54,7 +54,7 @@ public class UserAgent extends Agent {
                     String content = msg.getContent();
                     System.out.println("UserAgent получи:\n" + content);
 
-                    // опитай да извикаш callback
+
                     Consumer<String> callback = pendingResponses.remove(msg.getConversationId());
                     if (callback != null) {
                         callback.accept(content);
@@ -196,10 +196,10 @@ public class UserAgent extends Agent {
                 ObjectMapper mapper = new ObjectMapper();
                 Plant plant = mapper.readValue(plantJson, Plant.class);
 
-                // Създай обвивка за reasoning
+
                 PlantRequestWrapper wrapper = new PlantRequestWrapper();
                 wrapper.setPlant(plant);
-                wrapper.setUserId(currentUserId); // ако е нужно
+                wrapper.setUserId(currentUserId);
 
                 String json = mapper.writeValueAsString(wrapper);
 
@@ -220,7 +220,7 @@ public class UserAgent extends Agent {
     public void requestPlantDetailsFromDB(String plantName, Consumer<String> callback) {
         ACLMessage msg = new ACLMessage(ACLMessage.REQUEST);
         msg.addReceiver(getAID("care"));
-        msg.setContent("getFullPlantDetails:" + plantName); // нова команда
+        msg.setContent("getFullPlantDetails:" + plantName);
         String convId = "plantFromDB_" + plantName + "_" + System.currentTimeMillis();
         msg.setConversationId(convId);
         pendingResponses.put(convId, callback);
@@ -235,8 +235,5 @@ public class UserAgent extends Agent {
         send(msg);
     }
 
-    // Call from LoginRegisterBehaviour after sucsessful login
-  /*  public void launchPlantGUI() {
-        SwingUtilities.invokeLater(() -> new PlantClientGUI(this));
-    }*/
+
 }
